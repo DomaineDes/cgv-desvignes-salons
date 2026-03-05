@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CGV – Domaine Desvignes – Salon Viticole</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1208;
+    --wine: #80363A;
+    --gold: #928E3D;
+    --cream: #faf7f2;
+    --parchment: #f0ead8;
+    --muted: #8a7e6e;
+    --border: #d8cdb8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    font-size: 15px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--wine);
+    color: var(--cream);
+    text-align: center;
+    padding: 3rem 2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(184,144,42,0.18) 0%, transparent 65%);
+  }
+
+  .domain-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  .domain-name span {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .subtitle {
+    margin-top: 0.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(250,247,242,0.65);
+    position: relative;
+  }
+
+  .header-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 1.2rem auto 1rem;
+    position: relative;
+  }
+
+  .header-rule::before, .header-rule::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 4px; height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    top: -1.5px;
+  }
+  .header-rule::before { left: -8px; }
+  .header-rule::after { right: -8px; }
+
+  .doc-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(250,247,242,0.85);
+    position: relative;
+  }
+
+  /* ── BADGE SALON ── */
+  .salon-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(184,144,42,0.15);
+    border: 1px solid rgba(184,144,42,0.4);
+    color: var(--gold);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 2px;
+    margin-top: 1.2rem;
+    position: relative;
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  /* ── ARTICLES ── */
+  .article {
+    margin-bottom: 2.4rem;
+    padding-bottom: 2.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .article:last-of-type { border-bottom: none; }
+
+  .article-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .article-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .article-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    font-weight: 600;
+    color: var(--wine);
+    letter-spacing: 0.02em;
+  }
+
+  .article p {
+    color: #3a3028;
+    margin-bottom: 0.7rem;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .article p:last-child { margin-bottom: 0; }
+
+  /* ── LISTS ── */
+  .article ul {
+    list-style: none;
+    margin: 0.6rem 0 0.8rem 0;
+    padding: 0;
+  }
+
+  .article ul li {
+    padding: 0.25rem 0 0.25rem 1.4rem;
+    position: relative;
+    color: #3a3028;
+  }
+
+  .article ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  /* ── ALERT ── */
+  .alert-alcohol {
+    background: #fff8f8;
+    border: 1px solid #d4636d;
+    border-left: 4px solid var(--wine);
+    padding: 1rem 1.2rem;
+    margin: 0.8rem 0;
+    border-radius: 2px;
+  }
+
+  .alert-alcohol p {
+    color: #80363A !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    font-size: 0.92rem;
+    margin: 0 !important;
+  }
+
+  /* ── NOTE IMPORTANTE ── */
+  .note-box {
+    background: var(--parchment);
+    border-left: 3px solid var(--gold);
+    padding: 0.9rem 1.1rem;
+    margin: 0.8rem 0;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  /* ── PREAMBLE ── */
+  .preamble {
+    background: var(--parchment);
+    border: 1px solid var(--border);
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .preamble::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    color: var(--gold);
+    opacity: 0.25;
+    position: absolute;
+    top: -0.5rem;
+    left: 0.6rem;
+    line-height: 1;
+  }
+
+  .preamble p {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.92rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(250,247,242,0.5);
+    text-align: center;
+    padding: 1.8rem 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
+
+  footer strong {
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  /* ── ORNEMENT ── */
+  .ornament {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 0.5em;
+    margin: 0.2rem 0 1.8rem;
+    opacity: 0.6;
+  }
+
+  @media (max-width: 480px) {
+    main { padding: 1.8rem 1.2rem 3rem; }
+    .article-header { flex-direction: column; gap: 0.2rem; }
+    header { padding: 2rem 1.2rem 2rem; }
+  }
+
+  @media print {
+    header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .article { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="domain-name">Domaine <span>Desvignes</span></div>
+  <p class="subtitle">Earl &nbsp;·&nbsp; Producteur de vins</p>
+  <div class="header-rule"></div>
+  <p class="doc-title">Conditions Générales de Vente</p>
+  <div class="salon-badge">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Vente directe au stand &nbsp;·&nbsp; Salon viticole &nbsp;·&nbsp; Prix TTC
+  </div>
+</header>
+
+<main>
+
+  <div class="preamble">
+    <p>Les présentes Conditions Générales de Vente s'appliquent exclusivement aux ventes de vins réalisées en direct par <strong>EARL Domaine Desvignes</strong> sur son stand lors de salons et foires viticoles, auprès de particuliers. Toute transaction effectuée sur le stand vaut acceptation pleine et entière des présentes CGV.</p>
+  </div>
+
+  <div class="ornament">· · ·</div>
+
+  <div class="article">
+    <div class="article-header">
+      <span class="article-num">Art. I</span>
+      <h2 class="article-title">Champ d'application</h2>
+    </div>
+    <p>Les présentes CGV régissent uniquement les ventes conclues en présentiel sur le stand du Domaine lors de salons viticoles, à des particuliers. Elles ne couvrent pas les ventes à distance, les commandes en ligne ou les expéditions, qui font l'objet de CGV spécifiques disponibles au caveau ou sur demande.</p>
+  </div>
+
+  <div class="article">
+    <div class="article-header">
+      <span class="article-num">Art. II</span>
+      <h2 class="article-title">Prix</h2>
+    </div>
+    <p>Tous les prix affichés sur le stand sont exprimés en <strong>euros, toutes taxes comprises (TTC)</strong>, conformément à la réglementation applicable aux ventes aux particuliers. Aucun frais supplémentaire n'est ajouté au prix affiché pour une vente sur place.</p>
+    <p>Les prix affichés font foi au moment de l'achat. Le Domaine se réserve le droit de les modifier à tout moment. Le prix applicable est celui indiqué sur l'étiquette ou la liste de prix au moment de la transaction.</p>
+  </div>
+
+  <div class="article">
+    <div class="article-header">
+      <span class="article-num">Art. III</span>
+      <h2 class="article-title">Modalités de vente au stand</h2>
+    </div>
+    <p>La vente est conclue et les produits sont remis à l'acheteur directement sur le stand. Le transfert de propriété et des risques s'opère au moment de la remise physique des produits contre paiement intégral du prix.</p>
+    <div class="note-box">Les quantités disponibles au stand sont limitées aux stocks apportés pour le salon. En cas d'indisponibilité, un produit similaire pourra être proposé.</div>
+  </div>
+
+  <div class="article">
+    <div class="article-header">
+      <span class="article-num">Art. IV</span>
+      <h2 class="article-title">Paiement</h2>
+    </div>
+    <p>Le paiement est exigé <strong>comptant, au moment de l'achat</strong>. Aucun crédit ni paiement différé n'est consenti. Les moyens de paiement acceptés sont :</p>
+    <ul>
+      <li>Espèces (dans la limite légale en vigueur)</li>
+      <li>Carte bancaire (CB, Visa, Mastercard)</li>
+      <li>Chèque à l'ordre de EARL Domaine Desvignes</li>
+    </ul>
+    <p>Un justificatif d'achat (ticket ou facture) est délivré sur demande.</p>
+  </div>
+
+  <div class="article">
+    <div class="article-header">
+      <span class="article-num">Art. V</span>
+      <h2 class="article-title">Absence de droit de rétractation</h2>
+    </div>
+    <p>Conformément à l'article L. 221-28 du Code de la consommation, le droit de rétractation de 14 jours prévu pour les ventes à distance <strong>ne s'applique pas</strong> aux ventes conclues en présentiel sur un stand lors d'un salon ou d'une foire.</p>
+    <p>Toute vente conclue sur le stand est donc ferme et définitive. Aucun retour ni remboursement ne sera accepté, sauf défaut avéré du produit (voir Article VI).</p>
+  </div>
+
+  <div class="article">
+    <div class="article-header">
+      <span class="article-num">Art. VI</span>
+      <h2 class="article-title">Conformité et réclamations</h2>
+    </div>
+    <p>L'acheteur est invité à vérifier l'état apparent des bouteilles au moment de l'achat (bouchon, étiquette, niveau). Tout défaut apparent doit être signalé <strong>immédiatement sur le stand</strong>, avant de quitter le salon.</p>
+    <p>En cas de vice caché ou de défaut non décelable à la réception (bouteille bouchonnée, défaut de vinification avéré), l'acheteur dispose de <strong>48 heures</strong> à compter de la découverte pour en informer le Domaine par écrit. Si la responsabilité du Domaine est reconnue, l'acheteur sera remboursé ou recevra un produit de remplacement. Aucune autre indemnisation ne pourra être réclamée.</p>
+  </div>
+
+  <div class="article">
+    <div class="article-header">
+      <span class="article-num">Art. VII</span>
+      <h2 class="article-title">Transport des produits après achat</h2>
+    </div>
+    <p>Dès la remise des bouteilles à l'acheteur, les produits voyagent sous la <strong>seule responsabilité de celui-ci</strong>. Le Domaine recommande de transporter les vins dans un contenant adapté, à l'abri de la chaleur et des chocs. Toute détérioration liée à un transport inadapté après achat exclut la responsabilité du Domaine.</p>
+  </div>
+
+  <div class="article">
+    <div class="article-header">
+      <span class="article-num">Art. VIII</span>
+      <h2 class="article-title">Mentions légales – Alcool et santé</h2>
+    </div>
+    <div class="alert-alcohol">
+      <p>⚠️ L'abus d'alcool est dangereux pour la santé. À consommer avec modération.<br>La vente d'alcool est interdite aux mineurs de moins de 18 ans.</p>
+    </div>
+    <p>Conformément à la loi Évin, aucune promotion en faveur de l'alcool n'est faite en dehors des cadres légaux autorisés.</p>
+  </div>
+
+  <div class="article">
+    <div class="article-header">
+      <span class="article-num">Art. IX</span>
+      <h2 class="article-title">Données personnelles</h2>
+    </div>
+    <p>Conformément au RGPD, les données personnelles éventuellement collectées sur le stand (liste de diffusion, bon de commande) sont utilisées exclusivement pour la gestion de la relation commerciale avec le Domaine. Elles ne sont jamais cédées à des tiers. Chaque personne dispose d'un droit d'accès, de rectification et d'effacement, en contactant directement le Domaine.</p>
+  </div>
+
+  <div class="article">
+    <div class="article-header">
+      <span class="article-num">Art. X</span>
+      <h2 class="article-title">Droit applicable et règlement des litiges</h2>
+    </div>
+    <p>Les présentes CGV sont soumises au droit français. En cas de litige, les parties s'engagent à rechercher une solution amiable avant toute action judiciaire. En l'absence de résolution amiable, l'acheteur particulier peut recourir gratuitement à un médiateur de la consommation. Le tribunal compétent sera celui du domicile de l'acheteur.</p>
+  </div>
+
+</main>
+
+<footer>
+  <strong>EARL Domaine Desvignes</strong>&nbsp; — &nbsp;CGV Salon viticole &nbsp;·&nbsp; Vente directe aux particuliers &nbsp;·&nbsp; Prix TTC
+</footer>
+
+</body>
+</html>
